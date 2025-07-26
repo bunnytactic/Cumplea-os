@@ -1,0 +1,147 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #ff69b4;
+    font-size: 3em;
+    margin-bottom: 50px;
+}
+
+.cake-container {
+    position: relative;
+    width: 200px;
+    height: 300px; /* Adjust height as needed */
+    margin: 0 auto;
+}
+
+.cake-piece {
+    position: absolute;
+    width: 180px;
+    left: 10px;
+    background-color: #ccc;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-500px); /* Start off-screen */
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+#piece1 {
+    height: 30px;
+    background-color: #f5deb3; /* Pan */
+    z-index: 1;
+}
+
+#cream1 {
+    height: 20px;
+    background-color: #ffe4e1; /* Crema */
+    z-index: 2;
+}
+
+#piece2 {
+    height: 30px;
+    background-color: #f5deb3; /* Otro trozo de pan */
+    z-index: 3;
+}
+
+#chocolate-cream {
+    height: 20px;
+    background-color: #8b4513; /* Crema de chocolate */
+    z-index: 4;
+}
+
+#piece3 {
+    height: 30px;
+    background-color: #f5deb3; /* Otro trozo de pan */
+    z-index: 3;
+}
+
+#liquid-cream {
+    width: 180px;
+    height: 5px;
+    background-color: #a0522d; /* Crema líquida */
+    left: 10px;
+    z-index: 5;
+    opacity: 0;
+    border-radius: 5px; 
+    overflow:hidden/* Para que parezca que cae */
+}
+
+.liquid-pour {
+    transition: height 1s ease-out, border-radius 1s ease-out, opacity 0.5s ease-in;
+    height: 60px; /* Altura final para que cubra la parte superior del pastel */
+    border-radius: 50% 50% 5px 5px; /* Cambia a una forma más de "derramado" */
+    opacity: 1 !important; /* Asegura que se vea */
+}
+
+#candle {
+    width: 10px;
+    height: 50px;
+    background-color: #ffcc00; /* Vela */
+    left: 95px; /* Centrar vela */
+    z-index: 6;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(-500px); /* Start off-screen */
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.flame {
+    width: 8px;
+    height: 15px;
+    background-color: orange;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -10px;
+    left: 1px;
+    box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.7);
+    animation: flicker 0.2s infinite alternate;
+    opacity: 0; /* Hidden initially */
+}
+
+@keyframes flicker {
+    from {
+        transform: scaleY(1);
+        box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.7);
+    }
+    to {
+        transform: scaleY(0.9);
+        box-shadow: 0 0 3px 1px rgba(255, 165, 0, 0.5);
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: #f0f;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: fall 3s ease-out forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+    
+}
+
